@@ -1,5 +1,7 @@
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export async function fetchIELTSCourse(lang: "en" | "bn" = "en") {
-  const url = `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=en&=`;
+  const url = `${BASE_URL}/products/ielts-course?lang=${lang}`;
 
   const res = await fetch(url, {
     headers: {
