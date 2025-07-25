@@ -1,13 +1,17 @@
-import React from 'react'
+import { fetchIELTSCourse } from "@/lib/api";
 
-type Props = {}
+export const metadata = {
+  title: "IELTS Course | 10 Minute School",
+};
 
-const Home = (props: Props) => {
+export default async function IELTSPage() {
+  const data = await fetchIELTSCourse();
+  console.log("FACKED",data);
+  
   return (
-    <div>
-      <p className='test text-6xl'>Test</p>
-    </div>
-  )
+    <main className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold">{data.title}</h1>
+      <p className="mt-2 text-gray-600">{data.description}</p>
+    </main>
+  );
 }
-
-export default Home
