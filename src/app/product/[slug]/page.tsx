@@ -1,6 +1,3 @@
-import Landing from "@/components/common/Landing";
-import Landingtwo from "@/components/common/landingtwo";
-import MiniSlider from "@/components/common/CustomSlider";
 import { fetchIELTSCourse } from "@/lib/api";
 import CustomSlider from "@/components/common/CustomSlider";
 import InstructorCard from "@/components/common/InstructorCard";
