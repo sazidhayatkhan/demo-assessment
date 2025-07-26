@@ -3,9 +3,11 @@ import React from "react";
 import Slider from "react-slick";
 import { FaCircleChevronRight, FaCircleChevronLeft } from "react-icons/fa6";
 
-type Props = {};
+type Props = {
+    data:any;
+};
 
-const MiniSlider = (props: Props) => {
+const MiniSlider = ({data}: Props) => {
   function SampleNextArrow({ onClick }: any) {
     return (
       <FaCircleChevronRight
@@ -52,10 +54,10 @@ const MiniSlider = (props: Props) => {
   return (
     <div className="hidden md:block my-3 w-full relative px-8"> {/* Relative container to anchor arrows */}
       <Slider {...settings}>
-        {[1, 2, 3, 4, 5].map((item, i) => (
+        {data?.map((item:any, i:any) => (
           <div key={i} className="">
             <div className="border-b-[1px] border-gray-600">
-              <button className="text-nowrap p-2 text-base text-gray-600 hover:text-green cursor-pointer">কোর্সটি করে যা শিখবেন</button>
+              <button className="text-nowrap p-2 text-base text-gray-600 hover:text-green cursor-pointer">{item?.name}</button>
             </div>
           </div>
         ))}

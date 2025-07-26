@@ -43,7 +43,7 @@ export default async function IELTSPage() {
         </div>
       </div>
       {/* SLider */}
-      <MiniSlider/>
+      <MiniSlider data={data.data.sections}/>
     </div>
     // <Landingtwo/>
     // <main className="p-6 max-w-4xl mx-auto">
