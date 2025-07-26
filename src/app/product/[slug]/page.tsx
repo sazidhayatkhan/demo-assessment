@@ -5,6 +5,7 @@ import { fetchIELTSCourse } from "@/lib/api";
 import CustomSlider from "@/components/common/CustomSlider";
 import InstructorCard from "@/components/common/InstructorCard";
 import CourseFeatureCard from "@/components/common/CourseFeatureCard";
+import EngagementCard from "@/components/common/EngagementCard";
 
 export const metadata = {
   title: "IELTS Course | 10 Minute School",
@@ -17,7 +18,6 @@ export default async function IELTSPage() {
   const { sections } = data?.data;
   return (
     <div className="max-w-[800px]">
-        {/* SectionONe */}
       <div className="min-h-[300px] md:min-h-[300px] flex items-center bg-black">
         <div className="">
           <h1 className="text-white mb-2 text-[21px] font-semibold md:text-4xl">
@@ -45,13 +45,11 @@ export default async function IELTSPage() {
           </div>
         </div>
       </div>
-      {/* Slider */}
       <CustomSlider data={sections}/>
-      
-      {/* Instructor Card */}
       <div className="space-y-8">
         <InstructorCard data={sections[2]}/>
         <CourseFeatureCard data={sections[3]}/>
+        <EngagementCard data={sections[4]}/>
       </div>
       <p className="text-sm text-gray-400 mt-4">
         Last generated at: {generatedAt}
