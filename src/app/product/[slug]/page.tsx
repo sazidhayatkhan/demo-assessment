@@ -50,7 +50,7 @@ export default async function IELTSPage() {
         <CourseFeatureCard data={sections[3]}/>
         <EngagementCard data={sections[4]}/>
         <PointerCard data={sections[5]}/>
-        <AboutCourseSection/>
+        <AboutCourseSection data={sections[7]}/>
       </div>
       <p className="text-sm text-gray-400 mt-4">
         Last generated at: {generatedAt}
