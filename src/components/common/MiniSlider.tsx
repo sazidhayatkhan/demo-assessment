@@ -20,7 +20,7 @@ const MiniSlider = ({ data }: Props) => {
   };
 
   return (
-    <div className="relative flex items-center">
+    <div className="hidden relative md:flex items-center">
       <button
         onClick={() => scroll('left')}
         className="absolute left-0 z-10 px-2 py-1 bg-white shadow-md rounded-l"
@@ -30,7 +30,7 @@ const MiniSlider = ({ data }: Props) => {
 
       <ul
         ref={listRef}
-        className="flex flex-nowrap overflow-x-scroll scroll-smooth no-scrollbar mx-8"
+        className="flex flex-nowrap overflow-x-scroll scroll-smooth no-scrollbar no-scrollbar mx-8"
       >
         {data?.map((item: any, i: number) =>
           item?.name === '' ? null : (
@@ -38,7 +38,7 @@ const MiniSlider = ({ data }: Props) => {
               key={i}
               className="text-nowrap p-2 text-base text-gray-600 min-w-fit"
             >
-              <button>{item?.name}</button>
+              <button className='cursor-pointer'>{item?.name}</button>
             </li>
           )
         )}
