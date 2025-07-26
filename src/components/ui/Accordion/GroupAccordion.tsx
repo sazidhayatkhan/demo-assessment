@@ -1,6 +1,6 @@
 "use client";
-
 import React, { useState } from "react";
+import { FaChevronUp,FaChevronDown } from "react-icons/fa";
 
 type AccordionItem = {
   title: string;
@@ -11,7 +11,7 @@ const data: AccordionItem[] = [
   {
     title: "Course Title 1",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde et placeat eaque eos nam vero numquam ea distinctio, a at nesciunt modi molestiae quos? Voluptas, laborum! Molestias aspernatur voluptate animi.",
+      "\u003Cli\u003Eযারা উচ্চশিক্ষা, মাইগ্রেশন বা চাকরির জন্য বিদেশে যেতে চান।\u003C/li\u003E\n\u003Cli\u003Eযারা উচ্চশিক্ষা শেষে বা দেশে বসবাসরত অবস্থায় বিদেশে স্থায়ীভাবে বসবাসের জন্য আবেদন করতে চান।\u003C/li\u003E\n\u003Cli\u003EIELTS পরীক্ষা যাদের জন্য ভীতিকর, কিংবা যারা IELTS প্রস্তুতি কোথা থেকে শুরু করবেন তা জানেন না।\u003C/li\u003E\n\u003Cli\u003Eযারা আগে পরীক্ষা দিয়েছেন কিন্তু নিজের IELTS Band Score বাড়াতে চান।\u003C/li\u003E\n\u003Cli\u003Eযারা চাকরি বা ব্যবসার কাজে কিংবা ব্যক্তিগত আগ্রহে নিজেদের reading, writing, listening এবং speaking দক্ষতা বাড়াতে চান।\u003C/li\u003E\n\u003Cli\u003E স্টুডেন্ট কিংবা চাকরিজীবীদের মধ্যে যারা ব্যস্ততার কারনে ঘরে বসেই IELTS এর জন্য সেরা প্রস্তুতি নিতে চান।\u003C/li\u003E",
   },
   {
     title: "Course Title 2",
@@ -38,7 +38,7 @@ const GroupAccordion: React.FC = () => {
         <div
           key={index}
           className={`py-2 ${
-            index !== data.length - 1 ? "border-b border-slate-200" : ""
+            index !== data.length - 1 ? "border-b border-slate-200 border-dashed" : ""
           }`}
         >
           <button
@@ -48,7 +48,7 @@ const GroupAccordion: React.FC = () => {
             <span className="max-w-[90%] font-medium md:text-base mx-lg:text-sm">
               {item.title}
             </span>
-            {openIndex === index ? <p>up</p> : <p>down</p>}
+            {openIndex === index ? <button><FaChevronUp/></button>:<button><FaChevronDown/></button>}
           </button>
           <div
             className={`transition-all duration-300 ease-in-out overflow-hidden ${
@@ -56,7 +56,10 @@ const GroupAccordion: React.FC = () => {
             }`}
           >
             <div className="px-0 pb-2 text-gray-500">
-              <div className="prose prose-ul:pl-4">\u003Cli\u003Eযারা উচ্চশিক্ষা, মাইগ্রেশন বা চাকরির জন্য বিদেশে যেতে চান।\u003C/li\u003E\n\u003Cli\u003Eযারা উচ্চশিক্ষা শেষে বা দেশে বসবাসরত অবস্থায় বিদেশে স্থায়ীভাবে বসবাসের জন্য আবেদন করতে চান।\u003C/li\u003E\n\u003Cli\u003EIELTS পরীক্ষা যাদের জন্য ভীতিকর, কিংবা যারা IELTS প্রস্তুতি কোথা থেকে শুরু করবেন তা জানেন না।\u003C/li\u003E\n\u003Cli\u003Eযারা আগে পরীক্ষা দিয়েছেন কিন্তু নিজের IELTS Band Score বাড়াতে চান।\u003C/li\u003E\n\u003Cli\u003Eযারা চাকরি বা ব্যবসার কাজে কিংবা ব্যক্তিগত আগ্রহে নিজেদের reading, writing, listening এবং speaking দক্ষতা বাড়াতে চান।\u003C/li\u003E\n\u003Cli\u003E স্টুডেন্ট কিংবা চাকরিজীবীদের মধ্যে যারা ব্যস্ততার কারনে ঘরে বসেই IELTS এর জন্য সেরা প্রস্তুতি নিতে চান।\u003C/li\u003E</div>
+              <div
+                className="prose prose-ul:pl-4"
+                dangerouslySetInnerHTML={{ __html: item.content }}
+              />
             </div>
           </div>
         </div>
