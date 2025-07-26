@@ -4,6 +4,7 @@ import InstructorCard from "@/components/common/InstructorCard";
 import CourseFeatureCard from "@/components/common/CourseFeatureCard";
 import EngagementCard from "@/components/common/EngagementCard";
 import PointerCard from "@/components/common/PointerCard";
+import AboutCourseSection from "@/components/common/AboutCourseSection";
 
 export const metadata = {
   title: "IELTS Course | 10 Minute School",
@@ -49,6 +50,7 @@ export default async function IELTSPage() {
         <CourseFeatureCard data={sections[3]}/>
         <EngagementCard data={sections[4]}/>
         <PointerCard data={sections[5]}/>
+        <AboutCourseSection/>
       </div>
       <p className="text-sm text-gray-400 mt-4">
         Last generated at: {generatedAt}
