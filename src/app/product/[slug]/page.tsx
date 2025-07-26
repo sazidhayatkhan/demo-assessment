@@ -4,6 +4,7 @@ import MiniSlider from "@/components/common/CustomSlider";
 import { fetchIELTSCourse } from "@/lib/api";
 import CustomSlider from "@/components/common/CustomSlider";
 import InstructorCard from "@/components/common/InstructorCard";
+import CourseLayoutCard from "@/components/common/CourseLayoutCard";
 
 export const metadata = {
   title: "IELTS Course | 10 Minute School",
@@ -48,7 +49,10 @@ export default async function IELTSPage() {
       <CustomSlider data={sections}/>
       
       {/* Instructor Card */}
-      <InstructorCard data={sections[2]}/>
+      <div className="space-y-8">
+        <InstructorCard data={sections[2]}/>
+        <CourseLayoutCard data={sections[3]}/>
+      </div>
       <p className="text-sm text-gray-400 mt-4">
         Last generated at: {generatedAt}
       </p>
