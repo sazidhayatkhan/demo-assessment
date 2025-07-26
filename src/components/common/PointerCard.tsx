@@ -8,7 +8,6 @@ type Props = {
 
 const PointerCard = ({data}: Props) => {
   const pointers:PointerValue[] = data?.values
-  console.log("WWWW",pointers);
   
   return (
     <div>

@@ -14,6 +14,7 @@ export type SectionValue =
   | GroupJoinValue
   | PointerValue
   | FeatureExplanationValue
+  | AboutValue
   | FaqValue
   | any;
 
@@ -78,6 +79,14 @@ export interface FeatureExplanationValue {
   id: string;
   title: string;
   video_thumbnail: string;
+}
+
+export interface AboutValue{
+  icon:string;
+  id:string;
+  description:string;
+  title:string;
+
 }
 
 export interface FaqValue {

@@ -16,7 +16,7 @@ export default async function IELTSPage() {
   const generatedAt = new Date().toLocaleTimeString();
   const { sections } = data?.data;
   return (
-    <div className="max-w-[800px]">
+    <div className="ps-12 max-w-[770px]">
       <div className="min-h-[300px] md:min-h-[300px] flex items-center bg-black">
         <div className="">
           <h1 className="text-white mb-2 text-[21px] font-semibold md:text-4xl">
