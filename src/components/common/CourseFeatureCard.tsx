@@ -5,7 +5,7 @@ type Props = {
   data: Section;
 };
 
-const CourseLayoutCard = ({ data }: Props) => {
+const CourseFeatureCard = ({ data }: Props) => {
 
   const courseFeatures: FeatureValue[] = data?.values;
 
@@ -39,4 +39,4 @@ const CourseLayoutCard = ({ data }: Props) => {
   );
 };
 
-export default CourseLayoutCard;
+export default CourseFeatureCard;
