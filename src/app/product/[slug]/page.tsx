@@ -3,6 +3,7 @@ import CustomSlider from "@/components/common/CustomSlider";
 import InstructorCard from "@/components/common/InstructorCard";
 import CourseFeatureCard from "@/components/common/CourseFeatureCard";
 import EngagementCard from "@/components/common/EngagementCard";
+import PointerCard from "@/components/common/PointerCard";
 
 export const metadata = {
   title: "IELTS Course | 10 Minute School",
@@ -47,6 +48,7 @@ export default async function IELTSPage() {
         <InstructorCard data={sections[2]}/>
         <CourseFeatureCard data={sections[3]}/>
         <EngagementCard data={sections[4]}/>
+        <PointerCard data={sections[5]}/>
       </div>
       <p className="text-sm text-gray-400 mt-4">
         Last generated at: {generatedAt}
