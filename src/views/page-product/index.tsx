@@ -41,6 +41,7 @@ const ProductUI = ({ data }: Props) => {
   const coursePreviewValues = data?.data?.media ?? [];
   const courseChecklistValues = data?.data?.checklist ?? []
   const ctaButtonValue = data?.data?.cta_text ?? {}
+  
   return (
       <>
       <div className="bg-black">
