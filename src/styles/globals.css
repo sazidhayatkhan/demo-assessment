@@ -29,9 +29,6 @@ body {
   max-width: 1440px;
   margin: auto;
 }
-.test{
-  background: blueviolet;
-}
 
 /* Thin scrollbar for WebKit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {

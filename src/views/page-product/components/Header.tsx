@@ -4,8 +4,8 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <div className="bg-black h-[310px] flex items-center">
-        <div className="container px-8">
+    <div className="h-[310px] flex items-center">
+        <div className="container px-12">
         <div className="md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
             <h1 className="text-white mb-2 text-[21px] font-semibold md:text-4xl">
                 IELTS Course by Munzereen Shahid
