@@ -4,7 +4,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <div className="fixed top-0 left-0 right-0 z-10 bg-white px-4 md:px-7 py-4 w-full border-b-[1px] border-slate-300">
+    <div className="fixed top-0 left-0 right-0 z-20 bg-white px-4 md:px-7 py-4 w-full border-b-[1px] border-slate-300">
       <div className="mx-auto max-w-[1440px]">
         <div className="flex justify-end">
           <button className="cursor-pointer">
