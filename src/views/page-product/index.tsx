@@ -39,13 +39,13 @@ const ProductUI = ({ data }: Props) => {
   const courseOutcomeValues = courseOutcomeSection ?? {};
   const aboutCourseValues = aboutCourseSection ?? {};
   const coursePreviewValues = data?.data?.media ?? [];
-
+  const courseChecklistValues = data?.data?.checklist ?? []
   return (
       <>
       <div className="bg-black">
         <div className="relative container">
           <Header/>
-          <CourseCardContainer data={coursePreviewValues}/>
+          <CourseCardContainer data={coursePreviewValues} checklist={courseChecklistValues}/>
         </div>
       </div>
       <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-12">

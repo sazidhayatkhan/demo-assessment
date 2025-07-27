@@ -1,11 +1,12 @@
 "use client";
-
 import React, { useState, useMemo, useEffect } from "react";
 import { Media } from "@/types/media";
 import CourseCardView from "./CourseCardView";
+import { Checklist } from "@/types/checklist";
 
 type Props = {
   data: Media[];
+  checklist:Checklist[];
 };
 
 type MappedMedia = {
@@ -14,7 +15,7 @@ type MappedMedia = {
   thumbnail: string;
 };
 
-const CourseCardContainer = ({ data = [] }: Props) => {
+const CourseCardContainer = ({ data = [], checklist=[] }: Props) => {
   const media: MappedMedia[] = useMemo(() => {
     return data
       .filter((item) => item.name === "preview_gallery")
@@ -80,6 +81,7 @@ const CourseCardContainer = ({ data = [] }: Props) => {
       goPrev={goPrev}
       goNext={goNext}
       selectMedia={selectMedia}
+      checklist={checklist}
     />
   );
 };

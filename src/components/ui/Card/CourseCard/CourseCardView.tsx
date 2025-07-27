@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
+import { Checklist } from "@/types/checklist";
 
 type MediaItem = {
   type: "image" | "video";
@@ -16,6 +17,7 @@ type Props = {
   goPrev: () => void;
   goNext: () => void;
   selectMedia: (index: number) => void;
+  checklist: Checklist[];
 };
 
 const CourseCardView = ({
@@ -26,6 +28,7 @@ const CourseCardView = ({
   goPrev,
   goNext,
   selectMedia,
+  checklist,
 }: Props) => {
   const currentMedia = media[currentIndex];
 
@@ -81,10 +84,16 @@ const CourseCardView = ({
         )}
 
         {/* Navigation Buttons */}
-        <button onClick={goPrev} className="absolute left-2 text-white text-2xl">
+        <button
+          onClick={goPrev}
+          className="absolute left-2 text-white text-2xl"
+        >
           <FaCircleChevronLeft />
         </button>
-        <button onClick={goNext} className="absolute right-2 text-white text-2xl">
+        <button
+          onClick={goNext}
+          className="absolute right-2 text-white text-2xl"
+        >
           <FaCircleChevronRight />
         </button>
       </div>
@@ -125,13 +134,26 @@ const CourseCardView = ({
 
       {/* Sticky Content */}
       <div className="md:sticky md:top-[112px] mt-4">
-        <div className="h-[500px] overflow-y-auto">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti
-            similique dolorum voluptatum fuga quos reprehenderit ullam non vero
-            perspiciatis error nemo, nisi, quas saepe, consectetur a voluptates
-            repellat. Voluptatibus, nobis!
-          </p>
+        <div className="p-4">
+          <p className="mb-4 text-xl font-semibold">এই কোর্সে যা থাকছে</p>
+          {checklist?.map((item, idx) => (
+            <div key={idx} className="flex items-center mb-3 leading-5">
+              {item?.icon && (
+                <div>
+                  <Image
+                    src={item?.icon}
+                    alt="icon"
+                    width={20}
+                    height={20}
+                    className="object-contain"
+                  />
+                </div>
+              )}
+              <p className="mb-0 inline-block pl-4 tracking-[0.005em] text-[#111827]">
+                {item?.text}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
