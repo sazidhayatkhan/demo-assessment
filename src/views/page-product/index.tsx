@@ -44,7 +44,7 @@ const ProductUI = ({ data }: Props) => {
       <div className="bg-black">
         <div className="relative container">
           <Header/>
-          <CourseCard/>
+          <CourseCard data={data?.data?.media}/>
         </div>
       </div>
       <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-12">
