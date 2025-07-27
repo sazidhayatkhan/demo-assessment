@@ -145,20 +145,20 @@ const CourseCard = ({ data = [] }: Props) => {
       </div>
 
       {/* Thumbnails */}
-      <div className="flex overflow-x-auto mt-2 gap-2 px-1">
+      <div className="flex overflow-x-auto scroll-smooth no-scrollbar mt-2 gap-2 px-1 ps-4">
         {media.map((item, idx) => (
           <button
             key={idx}
             onClick={() => selectMedia(idx)}
             className={`flex-shrink-0 border ${
-              idx === currentIndex ? "border-blue-500" : "border-transparent"
+              idx === currentIndex ? "border-green border-[2px] rounded-lg overflow-hidden" : "border-transparent"
             }`}
           >
             <Image
               src={item.thumbnail}
               alt={`Thumb ${idx}`}
               width={75}
-              height={40}
+              height={35}
               className="object-cover"
             />
           </button>

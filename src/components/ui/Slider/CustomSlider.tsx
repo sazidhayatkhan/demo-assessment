@@ -33,7 +33,7 @@ const CustomSlider = ({ data }: Props) => {
 
       <ul
         ref={listRef}
-        className="flex flex-nowrap overflow-x-scroll scroll-smooth no-scrollbar no-scrollbar mx-8"
+        className="flex flex-nowrap overflow-x-scroll scroll-smooth no-scrollbar mx-8"
       >
         {data?.map((item, idx) =>
           item?.name === '' ? null : (
