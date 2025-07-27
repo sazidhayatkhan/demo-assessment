@@ -1,17 +1,21 @@
+'use client'
 import React from "react";
 import Image from "next/image";
 import { Value } from "@/types/product";
+import CtaButton from "../Button/CtaButton";
 
 type Props = {
   engagement:Value
 };
 
 const EngagementCard = ({ engagement }: Props) => {
-
+  const handleClick =()=>{
+    alert("Clicked!")
+  }
   
   return (
     <div
-      className="flex gap-4 p-4 mb-8 overflow-hidden md:p-8 rounded-xl md:mb-12"
+      className="flex gap-4 p-4 mb-8 overflow-hidden md:p-8 rounded-2xl md:mb-12"
       style={{
         backgroundImage: `url(${engagement?.background?.image})`,
         backgroundSize: "cover",
@@ -40,7 +44,7 @@ const EngagementCard = ({ engagement }: Props) => {
         >
           {engagement?.description}
         </p>
-        <button>download</button>
+        <CtaButton onClick={handleClick} className="mt-7">ফ্রি PDF Download করুন</CtaButton>
       </div>
       <div className="items-center hidden w-1/2 md:flex">
         {

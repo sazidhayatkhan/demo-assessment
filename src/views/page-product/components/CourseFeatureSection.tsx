@@ -11,7 +11,7 @@ const CourseFeatureSection = ({data}: Props) => {
   return (
     <div className="flex flex-col gap-3">
       <h2 className="mb-2 text-xl font-semibold md:text-2xl">{data?.name}</h2>
-      <div className="mb-16 grid grid-cols-1 gap-4 rounded-md border bg-[#111827] p-6 md:grid-cols-2 md:gap-8">
+      <div className="mb-10 grid grid-cols-1 gap-4 rounded-md border bg-[#111827] p-6 md:grid-cols-2 md:gap-8">
         {data?.values?.map((item,idx) => (
           <div key={idx} className="flex flex-row items-start gap-3 m-1">
             <div className="relative w-9 h-9 overflow-hidden rounded-full">

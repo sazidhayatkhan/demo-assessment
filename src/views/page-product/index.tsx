@@ -1,11 +1,11 @@
 import React from "react";
 import { Product, Section } from "@/types/product";
+import CustomSlider from "@/components/ui/Slider/CustomSlider";
 import InstructorSection from "./components/InstructorSection";
 import CourseFeatureSection from "./components/CourseFeatureSection";
 import EngagementSection from "./components/EngagementSection";
 import CourseOutcomeSection from "./components/CourseOutcomeSection";
 import AboutCourseSection from "./components/AboutCourseSection";
-import CustomSlider from "@/components/ui/Slider/CustomSlider";
 
 type Props = {
   data: Product;
@@ -39,8 +39,9 @@ const ProductUI = ({ data }: Props) => {
   
   
   return (
-    <div className="ps-12 max-w-[770px]">
-      <div className="min-h-[300px] md:min-h-[300px] flex items-center bg-black">
+    <div className="bg-black h-[300px] md:h-[300px]">
+    <div className="ps-12 max-w-[760px]">
+      <div className="min-h-[300px] md:min-h-[300px] flex items-center">
         <div className="">
           <h1 className="text-white mb-2 text-[21px] font-semibold md:text-4xl">
             IELTS Course by Munzereen Shahid
@@ -78,6 +79,7 @@ const ProductUI = ({ data }: Props) => {
       <p className="text-sm text-gray-400 mt-4">
         Last generated at: {generatedAt}
       </p>
+    </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ type Props = {
 
 const EngagementSection = ({ data }: Props) => {
   return (
-    <div>
+    <div className="">
       {data?.values?.map((item, idx) => (
         <EngagementCard key={idx} engagement={item} />
       ))}
