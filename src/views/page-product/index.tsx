@@ -6,8 +6,8 @@ import CourseFeatureSection from "./components/CourseFeatureSection";
 import EngagementSection from "./components/EngagementSection";
 import CourseOutcomeSection from "./components/CourseOutcomeSection";
 import AboutCourseSection from "./components/AboutCourseSection";
-import CourseCard from "@/components/ui/Card/CourseCard";
 import Header from "./components/Header";
+import CourseCardContainer from "@/components/ui/Card/CourseCard/CourseCardContainer";
 
 type Props = {
   data: Product;
@@ -38,13 +38,14 @@ const ProductUI = ({ data }: Props) => {
   const engagementValues = engagementSection ?? {};
   const courseOutcomeValues = courseOutcomeSection ?? {};
   const aboutCourseValues = aboutCourseSection ?? {};
+  const coursePreviewValues = data?.data?.media ?? [];
 
   return (
       <>
       <div className="bg-black">
         <div className="relative container">
           <Header/>
-          <CourseCard data={data?.data?.media}/>
+          <CourseCardContainer data={coursePreviewValues}/>
         </div>
       </div>
       <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-12">

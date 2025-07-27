@@ -1,75 +1,33 @@
-"use client";
-
-import React, { useState, useMemo, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import { Media } from "@/types/media";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 
-type Props = {
-  data: Media[];
+type MediaItem = {
+  type: "image" | "video";
+  src: string;
+  thumbnail: string;
 };
 
-const CourseCard = ({ data = [] }: Props) => {
-  const media = useMemo(() => {
-    return data
-      .filter((item) => item.name === "preview_gallery")
-      .map((item) => {
-        const isVideo = item.resource_type === "video";
-        return {
-          type: isVideo ? "video" : "image",
-          src: isVideo
-            ? `https://www.youtube.com/embed/${item.resource_value}`
-            : item.resource_value,
-          thumbnail:
-            item.thumbnail_url ||
-            (item.resource_type === "image"
-              ? item.resource_value
-              : "/default-thumb.jpg"),
-        };
-      });
-  }, [data]);
+type Props = {
+  media: MediaItem[];
+  currentIndex: number;
+  isPlaying: boolean;
+  setIsPlaying: (playing: boolean) => void;
+  goPrev: () => void;
+  goNext: () => void;
+  selectMedia: (index: number) => void;
+};
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    const preloadLinks: HTMLLinkElement[] = [];
-
-    media.forEach((item) => {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
-      link.href = item.thumbnail;
-      document.head.appendChild(link);
-      preloadLinks.push(link);
-    });
-
-    return () => {
-      preloadLinks.forEach((link) => {
-        document.head.removeChild(link);
-      });
-    };
-  }, [media]);
-
-  useEffect(() => {
-    setIsPlaying(false);
-  }, [currentIndex]);
-
-  if (media.length === 0) return null;
-
+const CourseCardView = ({
+  media,
+  currentIndex,
+  isPlaying,
+  setIsPlaying,
+  goPrev,
+  goNext,
+  selectMedia,
+}: Props) => {
   const currentMedia = media[currentIndex];
-
-  const goPrev = () => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : media.length - 1));
-  };
-
-  const goNext = () => {
-    setCurrentIndex((prev) => (prev < media.length - 1 ? prev + 1 : 0));
-  };
-
-  const selectMedia = (index: number) => {
-    setCurrentIndex(index);
-  };
 
   return (
     <div className="w-full md:max-w-[330px] lg:max-w-[400px] order-2 bg-white absolute right-9 md:top-[55px] md:absolute border border-slate-300 p-1">
@@ -102,10 +60,7 @@ const CourseCard = ({ data = [] }: Props) => {
               className="object-cover"
               priority={currentIndex === 0}
             />
-
-            {/* Light black overlay */}
             <div className="absolute inset-0 bg-black/30"></div>
-
             <div className="absolute inset-0 flex justify-center items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,34 +69,22 @@ const CourseCard = ({ data = [] }: Props) => {
                 fill="none"
                 viewBox="0 0 56 56"
               >
-                <circle
-                  cx="28"
-                  cy="28"
-                  r="28"
-                  fill="#fff"
-                  fillOpacity="0.5"
-                ></circle>
-                <circle cx="28" cy="28" r="25.415" fill="#fff"></circle>
+                <circle cx="28" cy="28" r="28" fill="#fff" fillOpacity="0.5" />
+                <circle cx="28" cy="28" r="25.415" fill="#fff" />
                 <path
                   fill="#1CAB55"
                   d="M37.492 26.268c1.334.77 1.334 2.694 0 3.464l-12.738 7.355c-1.334.77-3-.193-3-1.732v-14.71c0-1.539 1.666-2.501 3-1.732l12.738 7.355z"
-                ></path>
+                />
               </svg>
             </div>
           </div>
         )}
 
         {/* Navigation Buttons */}
-        <button
-          onClick={goPrev}
-          className="absolute left-2 text-white text-2xl"
-        >
+        <button onClick={goPrev} className="absolute left-2 text-white text-2xl">
           <FaCircleChevronLeft />
         </button>
-        <button
-          onClick={goNext}
-          className="absolute right-2 text-white text-2xl"
-        >
+        <button onClick={goNext} className="absolute right-2 text-white text-2xl">
           <FaCircleChevronRight />
         </button>
       </div>
@@ -180,7 +123,7 @@ const CourseCard = ({ data = [] }: Props) => {
         ))}
       </div>
 
-      {/* Sticky content */}
+      {/* Sticky Content */}
       <div className="md:sticky md:top-[112px] mt-4">
         <div className="h-[500px] overflow-y-auto">
           <p>
@@ -195,4 +138,4 @@ const CourseCard = ({ data = [] }: Props) => {
   );
 };
 
-export default CourseCard;
+export default CourseCardView;
