@@ -32,7 +32,6 @@ const CourseCard = ({ data = [] }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Preload all thumbnails to reduce flicker
   useEffect(() => {
     const preloadLinks: HTMLLinkElement[] = [];
 
@@ -52,7 +51,6 @@ const CourseCard = ({ data = [] }: Props) => {
     };
   }, [media]);
 
-  // Reset playing state when switching media
   useEffect(() => {
     setIsPlaying(false);
   }, [currentIndex]);
@@ -76,13 +74,13 @@ const CourseCard = ({ data = [] }: Props) => {
   return (
     <div className="w-full md:max-w-[330px] lg:max-w-[400px] order-2 bg-white absolute right-9 md:top-[60px] md:absolute border border-slate-300 p-2">
       {/* Main preview */}
-      <div className="relative h-[230px] bg-black flex items-center justify-center overflow-hidden">
+      <div className="relative h-[220px] bg-black flex items-center justify-center overflow-hidden">
         {currentMedia.type === "image" ? (
           <Image
             src={currentMedia.src}
             alt="Preview"
             fill
-            className="object-cover"
+            className="object-contain object-top"
             priority
           />
         ) : isPlaying ? (
@@ -150,7 +148,7 @@ const CourseCard = ({ data = [] }: Props) => {
           <button
             key={idx}
             onClick={() => selectMedia(idx)}
-            className={`flex-shrink-0 border ${
+            className={`h-[42px] flex-shrink-0 border ${
               idx === currentIndex ? "border-green border-[2px] rounded-lg overflow-hidden" : "border-transparent"
             }`}
           >
