@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import { Checklist } from "@/types/checklist";
+import CtaButton from "../../Button/CtaButton";
+import { CtaButtonModel } from "@/types/ctaButtonModel";
 
 type MediaItem = {
   type: "image" | "video";
@@ -18,6 +20,7 @@ type Props = {
   goNext: () => void;
   selectMedia: (index: number) => void;
   checklist: Checklist[];
+  ctaButton:CtaButtonModel;
 };
 
 const CourseCardView = ({
@@ -29,11 +32,12 @@ const CourseCardView = ({
   goNext,
   selectMedia,
   checklist,
+  ctaButton
 }: Props) => {
   const currentMedia = media[currentIndex];
 
   return (
-    <div className="w-full md:max-w-[330px] lg:max-w-[400px] order-2 bg-white absolute right-9 md:top-[55px] md:absolute border border-slate-300 p-1">
+    <div className="w-full md:max-w-[330px] lg:max-w-[390px] order-2 bg-white absolute right-9 md:top-[55px] md:absolute border border-slate-300 p-1">
       {/* Main preview */}
       <div className="relative h-[215px] bg-black flex items-center justify-center overflow-hidden">
         {currentMedia.type === "image" ? (
@@ -104,7 +108,7 @@ const CourseCardView = ({
           <button
             key={idx}
             onClick={() => selectMedia(idx)}
-            className={`relative h-[42px] flex-shrink-0 border ${
+            className={`cursor-pointer relative h-[42px] flex-shrink-0 border ${
               idx === currentIndex
                 ? "border-green border-[2px] rounded-lg overflow-hidden"
                 : "border-transparent"
@@ -135,7 +139,26 @@ const CourseCardView = ({
       {/* Sticky Content */}
       <div className="md:sticky md:top-[112px] mt-4">
         <div className="p-4">
-          <p className="mb-4 text-xl font-semibold">এই কোর্সে যা থাকছে</p>
+          {/* Price */}
+          <div className="flex items-center justify-between md:flex-col md:items-start">
+            <div className="md:mb-6">
+              <div className="inline-block text-2xl font-semibold">৳3850</div>
+              <span className="infline-flex">
+                <del className="ml-2 text-base font-normal md:text-xl">
+                  ৳5000
+                </del>
+                <div className="bg-orange-500 text-white text-sm font-semibold px-4 py-1 inline-block opacity-70">
+                    ১১৫০৳ ছাড়
+                  </div>
+              </span>
+            </div>
+          </div>
+
+          {/* Button */}
+            <CtaButton className="w-full">{ctaButton?.name}</CtaButton>
+
+          {/* Checklist */}
+          <p className="mb-4 text-xl font-semibold mt-8">এই কোর্সে যা থাকছে</p>
           {checklist?.map((item, idx) => (
             <div key={idx} className="flex items-center mb-3 leading-5">
               {item?.icon && (

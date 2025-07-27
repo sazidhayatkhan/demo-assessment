@@ -40,12 +40,17 @@ const ProductUI = ({ data }: Props) => {
   const aboutCourseValues = aboutCourseSection ?? {};
   const coursePreviewValues = data?.data?.media ?? [];
   const courseChecklistValues = data?.data?.checklist ?? []
+  const ctaButtonValue = data?.data?.cta_text ?? {}
   return (
       <>
       <div className="bg-black">
         <div className="relative container">
           <Header/>
-          <CourseCardContainer data={coursePreviewValues} checklist={courseChecklistValues}/>
+          <CourseCardContainer 
+            data={coursePreviewValues} 
+            checklist={courseChecklistValues}
+            ctaButton={ctaButtonValue}
+          />
         </div>
       </div>
       <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-12">
