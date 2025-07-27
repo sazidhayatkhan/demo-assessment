@@ -2,10 +2,10 @@ import React from "react";
 import { Product, Section } from "@/types/product";
 import InstructorSection from "./components/InstructorSection";
 import CourseFeatureSection from "./components/CourseFeatureSection";
-import EngagementCard from "@/components/ui/Card/EngagementCard";
 import EngagementSection from "./components/EngagementSection";
 import CourseOutcomeSection from "./components/CourseOutcomeSection";
 import AboutCourseSection from "./components/AboutCourseSection";
+import CustomSlider from "@/components/ui/Slider/CustomSlider";
 
 type Props = {
   data: Product;
@@ -13,7 +13,7 @@ type Props = {
 
 const ProductUI = ({ data }: Props) => {
   const generatedAt = new Date().toLocaleTimeString();
-
+  
   const instructorSection: Section | undefined = data?.data?.sections.find(
     (section) => section.type === "instructors"
   );
@@ -30,6 +30,7 @@ const ProductUI = ({ data }: Props) => {
     (section) => section.type === "about"
   );
 
+  const sliderValues = data?.data?.sections ?? [];
   const instructorValues = instructorSection ?? {};
   const courseFeatureValues = courseFeaturesSection ?? {};
   const engagementValues = engagementSection ?? {};
@@ -66,7 +67,7 @@ const ProductUI = ({ data }: Props) => {
           </div>
         </div>
       </div>
-      {/* <CustomSlider data={sections}/> */}
+      <CustomSlider data={sliderValues}/>
       <div className="space-y-8">
         <InstructorSection data={instructorValues} />
         <CourseFeatureSection data={courseFeatureValues}/>

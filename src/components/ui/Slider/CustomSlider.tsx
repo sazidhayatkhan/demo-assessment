@@ -1,12 +1,14 @@
 'use client'
+import { Section } from '@/types/product';
 import React, { useRef } from 'react';
-import { Section } from '@/types/section';
 import { FaCircleChevronRight,FaCircleChevronLeft } from "react-icons/fa6";
 type Props = {
+
   data: Section[];
 };
 
 const CustomSlider = ({ data }: Props) => {
+
   const listRef = useRef<HTMLUListElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -33,10 +35,10 @@ const CustomSlider = ({ data }: Props) => {
         ref={listRef}
         className="flex flex-nowrap overflow-x-scroll scroll-smooth no-scrollbar no-scrollbar mx-8"
       >
-        {data?.map((item: Section, i: number) =>
+        {data?.map((item, idx) =>
           item?.name === '' ? null : (
             <li
-              key={i}
+              key={idx}
               className="text-nowrap p-2 text-base min-w-fit"
             >
               <button className='cursor-pointer font-medium text-gray-600'>{item?.name}</button>
