@@ -1,13 +1,14 @@
 import React from "react";
-import { GroupJoinValue, Section } from "@/types/section";
 import Image from "next/image";
+import { Section, Value } from "@/types/product";
+
 type Props = {
-  data: Section;
+  engagement:Value
 };
 
-const EngagementCard = ({ data }: Props) => {
-  const engagement: GroupJoinValue = data?.values[0];
+const EngagementCard = ({ engagement }: Props) => {
 
+  
   return (
     <div
       className="flex gap-4 p-4 mb-8 overflow-hidden md:p-8 rounded-xl md:mb-12"

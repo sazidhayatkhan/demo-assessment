@@ -2,6 +2,8 @@ import React from "react";
 import { Product, Section } from "@/types/product";
 import InstructorSection from "./components/InstructorSection";
 import CourseFeatureSection from "./components/CourseFeatureSection";
+import EngagementCard from "@/components/ui/Card/EngagementCard";
+import EngagementSection from "./components/EngagementSection";
 
 type Props = {
   data: Product;
@@ -16,9 +18,13 @@ const ProductUI = ({ data }: Props) => {
   const courseFeaturesSection: Section | undefined = data?.data?.sections.find(
     (section) => section.type === "features"
   );
+  const engagementSection: Section | undefined = data?.data?.sections.find(
+    (section) => section.type === "group_join_engagement"
+  );
 
   const instructorValues = instructorSection ?? {};
   const courseFeatureValues = courseFeaturesSection ?? {};
+  const engagementValues = engagementSection ?? {};
   
   
   return (
@@ -54,8 +60,8 @@ const ProductUI = ({ data }: Props) => {
       <div className="space-y-8">
         <InstructorSection data={instructorValues} />
         <CourseFeatureSection data={courseFeatureValues}/>
+        <EngagementSection data={engagementValues}/>
         {/*
-        <EngagementCard data={sections[4]}/>
         <PointerCard data={sections[5]}/>
         <AboutCourseSection data={sections[7]}/> */}
       </div>
