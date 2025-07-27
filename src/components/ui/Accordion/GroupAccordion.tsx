@@ -20,7 +20,7 @@ const GroupAccordion: React.FC<Props> = ({ contents }) => {
       {contents?.map((item, index) => (
         <div
           key={index}
-          className={`py-4 ${
+          className={`${
             index !== contents.length - 1
               ? "border-b border-slate-200 border-dashed"
               : ""
@@ -28,7 +28,7 @@ const GroupAccordion: React.FC<Props> = ({ contents }) => {
         >
           <button
             onClick={() => toggleAccordion(index)}
-            className="w-full flex items-center justify-between text-left group"
+            className="py-4 w-full flex items-center justify-between text-left group"
           >
             <span className="max-w-[90%] font-medium md:text-base mx-lg:text-sm">
               <span dangerouslySetInnerHTML={{ __html: item?.title ?? "" }} />

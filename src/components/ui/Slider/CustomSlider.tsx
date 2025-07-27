@@ -23,7 +23,7 @@ const CustomSlider = ({ data }: Props) => {
   };
 
   return (
-    <div className="hidden relative md:flex items-center my-6">
+    <div className="hidden relative md:flex items-center">
       <button
         onClick={() => scroll('left')}
         className="absolute left-0 z-10 text-3xl text-gray-500"
