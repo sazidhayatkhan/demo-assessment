@@ -148,8 +148,10 @@ const CourseCard = ({ data = [] }: Props) => {
           <button
             key={idx}
             onClick={() => selectMedia(idx)}
-            className={`h-[42px] flex-shrink-0 border ${
-              idx === currentIndex ? "border-green border-[2px] rounded-lg overflow-hidden" : "border-transparent"
+            className={`relative h-[42px] flex-shrink-0 border ${
+              idx === currentIndex
+                ? "border-green border-[2px] rounded-lg overflow-hidden"
+                : "border-transparent"
             }`}
           >
             <Image
@@ -159,6 +161,17 @@ const CourseCard = ({ data = [] }: Props) => {
               height={35}
               className="object-cover"
             />
+            {item.type === "video" && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <Image
+                  src="/images/little_play.svg"
+                  alt="play-icon"
+                  width={23}
+                  height={23}
+                  className="object-contain"
+                />
+              </div>
+            )}
           </button>
         ))}
       </div>
