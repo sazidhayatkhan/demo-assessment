@@ -74,7 +74,7 @@ const CourseCard = ({ data = [] }: Props) => {
   return (
     <div className="w-full md:max-w-[330px] lg:max-w-[400px] order-2 bg-white absolute right-9 md:top-[60px] md:absolute border border-slate-300 p-2">
       {/* Main preview */}
-      <div className="relative h-[220px] bg-black flex items-center justify-center overflow-hidden">
+      <div className="relative h-[215px] bg-black flex items-center justify-center overflow-hidden">
         {currentMedia.type === "image" ? (
           <Image
             src={currentMedia.src}
@@ -102,6 +102,10 @@ const CourseCard = ({ data = [] }: Props) => {
               className="object-cover"
               priority={currentIndex === 0}
             />
+
+            {/* Light black overlay */}
+            <div className="absolute inset-0 bg-black/30"></div>
+
             <div className="absolute inset-0 flex justify-center items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +147,7 @@ const CourseCard = ({ data = [] }: Props) => {
       </div>
 
       {/* Thumbnails */}
-      <div className="flex overflow-x-auto scroll-smooth no-scrollbar mt-2 gap-2 px-1 ps-4">
+      <div className="flex overflow-x-auto scroll-smooth no-scrollbar mt-3 gap-2 px-1 ps-4">
         {media.map((item, idx) => (
           <button
             key={idx}
