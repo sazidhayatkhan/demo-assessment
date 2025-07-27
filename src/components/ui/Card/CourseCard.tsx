@@ -72,7 +72,7 @@ const CourseCard = ({ data = [] }: Props) => {
   };
 
   return (
-    <div className="w-full md:max-w-[330px] lg:max-w-[400px] order-2 bg-white absolute right-9 md:top-[60px] md:absolute border border-slate-300 p-2">
+    <div className="w-full md:max-w-[330px] lg:max-w-[400px] order-2 bg-white absolute right-9 md:top-[55px] md:absolute border border-slate-300 p-1">
       {/* Main preview */}
       <div className="relative h-[215px] bg-black flex items-center justify-center overflow-hidden">
         {currentMedia.type === "image" ? (

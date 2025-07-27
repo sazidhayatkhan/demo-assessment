@@ -49,7 +49,7 @@ const ProductUI = ({ data }: Props) => {
       </div>
       <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-12">
         <div className="flex-1 md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
-          <div className="sticky top-[62px] z-10 bg-white py-3 mb-10">
+          <div className="sticky top-[62px] z-10 bg-white py-3 mb-6">
             <CustomSlider data={sliderValues} />
           </div>
           <div className="space-y-8">
