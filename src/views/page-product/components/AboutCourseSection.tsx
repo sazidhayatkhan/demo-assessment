@@ -7,7 +7,6 @@ type Props = {
 }
 
 const AboutCourseSection = ({data}: Props) => {
-  console.log("DDDD",data);
   
   
   return (
