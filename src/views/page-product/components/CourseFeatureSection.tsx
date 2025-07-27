@@ -1,20 +1,19 @@
 import React from "react";
-import { FeatureValue, Section } from "@/types/section";
-import Image from "next/image";
+import { Section } from "@/types/product";
+import Image from 'next/image'
+
 type Props = {
-  data: Section;
+    data:Section
 };
 
-const CourseFeatureCard = ({ data }: Props) => {
-
-  const courseFeatures: FeatureValue[] = data?.values;
-
+const CourseFeatureSection = ({data}: Props) => {
+    console.log("daaaaaa",data);
   return (
     <div className="flex flex-col gap-3">
       <h2 className="mb-2 text-xl font-semibold md:text-2xl">{data?.name}</h2>
       <div className="mb-16 grid grid-cols-1 gap-4 rounded-md border bg-[#111827] p-6 md:grid-cols-2 md:gap-8">
-        {courseFeatures?.map((item: any, i: number) => (
-          <div key={i} className="flex flex-row items-start gap-3 m-1">
+        {data?.values?.map((item,idx) => (
+          <div key={idx} className="flex flex-row items-start gap-3 m-1">
             <div className="relative w-9 h-9 overflow-hidden rounded-full">
               <Image
                 src={item?.icon || "/images/user.png"}
@@ -39,4 +38,4 @@ const CourseFeatureCard = ({ data }: Props) => {
   );
 };
 
-export default CourseFeatureCard;
+export default CourseFeatureSection;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Product, Section } from "@/types/product";
 import InstructorSection from "./components/InstructorSection";
+import CourseFeatureSection from "./components/CourseFeatureSection";
 
 type Props = {
   data: Product;
@@ -12,11 +13,14 @@ const ProductUI = ({ data }: Props) => {
   const instructorSection: Section | undefined = data?.data?.sections.find(
     (section) => section.type === "instructors"
   );
+  const courseFeaturesSection: Section | undefined = data?.data?.sections.find(
+    (section) => section.type === "features"
+  );
 
   const instructorValues = instructorSection ?? {};
+  const courseFeatureValues = courseFeaturesSection ?? {};
   
   
-
   return (
     <div className="ps-12 max-w-[770px]">
       <div className="min-h-[300px] md:min-h-[300px] flex items-center bg-black">
@@ -49,7 +53,8 @@ const ProductUI = ({ data }: Props) => {
       {/* <CustomSlider data={sections}/> */}
       <div className="space-y-8">
         <InstructorSection data={instructorValues} />
-        {/* <CourseFeatureCard data={sections[3]}/>
+        <CourseFeatureSection data={courseFeatureValues}/>
+        {/*
         <EngagementCard data={sections[4]}/>
         <PointerCard data={sections[5]}/>
         <AboutCourseSection data={sections[7]}/> */}
