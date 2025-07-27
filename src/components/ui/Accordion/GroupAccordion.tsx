@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import { Value } from "@/types/product";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
-import {AboutValue} from '@/types/section'
+
 type Props = {
-  contents:AboutValue[]
+  contents?: Value[];
 };
 
+const GroupAccordion: React.FC<Props> = ({ contents }) => {
 
-const GroupAccordion: React.FC<Props> = ({contents}) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
@@ -30,7 +31,7 @@ const GroupAccordion: React.FC<Props> = ({contents}) => {
             className="w-full flex items-center justify-between text-left group"
           >
             <span className="max-w-[90%] font-medium md:text-base mx-lg:text-sm">
-              <span dangerouslySetInnerHTML={{ __html: item?.title }}/>
+              <span dangerouslySetInnerHTML={{ __html: item?.title ?? "" }} />
             </span>
             <span className="text-sm text-slate-300 group-hover:text-black transition duration-500">
               {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
@@ -44,7 +45,7 @@ const GroupAccordion: React.FC<Props> = ({contents}) => {
             <div className="px-0 pb-2 text-gray-500">
               <div
                 className="prose prose-ul:pl-4"
-                dangerouslySetInnerHTML={{ __html: item?.description }}
+                dangerouslySetInnerHTML={{ __html: item?.description ?? "" }}
               />
             </div>
           </div>

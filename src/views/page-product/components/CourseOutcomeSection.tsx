@@ -1,5 +1,5 @@
-import { Section } from "@/types/product";
 import React from "react";
+import { Section } from "@/types/product";
 import { FaCheck } from "react-icons/fa6";
 
 type Props = {
