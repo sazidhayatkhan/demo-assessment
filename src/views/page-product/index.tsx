@@ -4,6 +4,7 @@ import InstructorSection from "./components/InstructorSection";
 import CourseFeatureSection from "./components/CourseFeatureSection";
 import EngagementCard from "@/components/ui/Card/EngagementCard";
 import EngagementSection from "./components/EngagementSection";
+import CourseOutcomeSection from "./components/CourseOutcomeSection";
 
 type Props = {
   data: Product;
@@ -21,10 +22,14 @@ const ProductUI = ({ data }: Props) => {
   const engagementSection: Section | undefined = data?.data?.sections.find(
     (section) => section.type === "group_join_engagement"
   );
+  const courseOutcomeSection: Section | undefined = data?.data?.sections.find(
+    (section) => section.type === "pointers"
+  );
 
   const instructorValues = instructorSection ?? {};
   const courseFeatureValues = courseFeaturesSection ?? {};
   const engagementValues = engagementSection ?? {};
+  const courseOutcomeValues = courseOutcomeSection ?? {};
   
   
   return (
@@ -61,8 +66,9 @@ const ProductUI = ({ data }: Props) => {
         <InstructorSection data={instructorValues} />
         <CourseFeatureSection data={courseFeatureValues}/>
         <EngagementSection data={engagementValues}/>
+        <CourseOutcomeSection data={courseOutcomeValues}/>
         {/*
-        <PointerCard data={sections[5]}/>
+        
         <AboutCourseSection data={sections[7]}/> */}
       </div>
       <p className="text-sm text-gray-400 mt-4">

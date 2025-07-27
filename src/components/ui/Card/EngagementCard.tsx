@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Section, Value } from "@/types/product";
+import { Value } from "@/types/product";
 
 type Props = {
   engagement:Value
