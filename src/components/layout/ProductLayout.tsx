@@ -1,18 +1,17 @@
-import React from 'react';
-import PreviewSliderContainer from '../ui/Slider/PreviewSlider/PreviewSliderContainer';
-import CourseCardSection from '../common/CourseCardSection';
-import Header from '../common/Header';
-import { Checklist } from '@/types/checklist';
-import { CtaButtonModel } from '@/types/ctaButtonModel';
-import { Media } from '@/types/media';
-
+import React from "react";
+import PreviewSliderContainer from "../ui/Slider/PreviewSlider/PreviewSliderContainer";
+import CourseCardSection from "../common/CourseCardSection";
+import Header from "../common/Header";
+import { Checklist } from "@/types/checklist";
+import { CtaButtonModel } from "@/types/ctaButtonModel";
+import { Media } from "@/types/media";
 
 interface LayoutProps {
   children: React.ReactNode;
   mediaPreviewValues: Media[];
   courseChecklistValues: Checklist[];
   ctaButtonValue: CtaButtonModel;
-  headerValue:any;
+  headerValue: any;
 }
 
 const ProductLayout: React.FC<LayoutProps> = ({
@@ -20,18 +19,20 @@ const ProductLayout: React.FC<LayoutProps> = ({
   mediaPreviewValues,
   courseChecklistValues,
   ctaButtonValue,
-  headerValue
+  headerValue,
 }) => {
   return (
     <div className="min-h-[300px]">
       <div className="relative container">
         {/* Mobile View */}
-        <div className="bg-cover bg-center"
-  style={{ backgroundImage: "url('/images/bg_img.jpeg')" }}>
-        <div className="block md:hidden p-4">
-          <PreviewSliderContainer data={mediaPreviewValues} />
-        </div>
-            <Header headerValue={headerValue}/>
+        <div
+          className="bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/bg_img.jpeg')" }}
+        >
+          <div className="block md:hidden p-4">
+            <PreviewSliderContainer data={mediaPreviewValues} />
+          </div>
+          <Header headerValue={headerValue} />
         </div>
         <div className="block md:hidden">
           <CourseCardSection
@@ -41,7 +42,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
         </div>
         {/* Desktop View */}
         <div className="hidden md:block w-full md:max-w-[330px] lg:max-w-[390px] absolute right-9 md:top-[55px]">
-          <div className="bg-white p-1 border border-slate-300">
+          <div className="main-part bg-white p-1 border border-slate-300">
             <PreviewSliderContainer data={mediaPreviewValues} />
             <CourseCardSection
               checklist={courseChecklistValues}
@@ -49,9 +50,22 @@ const ProductLayout: React.FC<LayoutProps> = ({
             />
           </div>
         </div>
-
         {/* Page-specific content */}
-        <div className="pt-4">{children}</div>
+        <div className="pt-4 bg-white">
+          <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-4 md:px-12">
+            <div className="flex-1 md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
+              {children}
+            </div>
+            <div className="this-part hidden w-full md:max-w-[330px] lg:max-w-[390px] bg-white">
+              <div className="ms-6 border border-slate-300">
+                <CourseCardSection
+                  checklist={courseChecklistValues}
+                  ctaButton={ctaButtonValue}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

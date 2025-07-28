@@ -40,7 +40,7 @@ const ProductUI = ({ data }: Props) => {
   const mediaPreviewValues = data?.data?.media ?? [];
   const courseChecklistValues = data?.data?.checklist ?? [];
   const ctaButtonValue = data?.data?.cta_text ?? {};
-  const headerValue = data?.data ?? {}
+  const headerValue = data?.data ?? {};
 
   return (
     <ProductLayout
@@ -49,24 +49,19 @@ const ProductUI = ({ data }: Props) => {
       courseChecklistValues={courseChecklistValues}
       ctaButtonValue={ctaButtonValue}
     >
-      <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-4 md:px-12">
-        <div className="flex-1 md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
-          <div className="hidden md:block sticky top-[62px] z-10 bg-white py-3 mb-6">
-            <CustomSlider data={sliderValues} />
-          </div>
-          <div className="mt-4 md:mt-0 space-y-8">
-            <InstructorSection data={instructorValues} />
-            <CourseFeatureSection data={courseFeatureValues} />
-            <EngagementSection data={engagementValues} />
-            <CourseOutcomeSection data={courseOutcomeValues} />
-            <AboutCourseSection data={aboutCourseValues} />
-          </div>
-          <p className="text-sm text-gray-400 mt-4">
-            Last generated at: {generatedAt}
-          </p>
-        </div>
-        <div className="hidden w-full md:max-w-[330px] lg:max-w-[390px] bg-white"></div>
+      <div className="hidden md:block sticky top-[62px] z-10 bg-white py-3 mb-6">
+        <CustomSlider data={sliderValues} />
       </div>
+      <div className="mt-4 md:mt-0 space-y-8">
+        <InstructorSection data={instructorValues} />
+        <CourseFeatureSection data={courseFeatureValues} />
+        <EngagementSection data={engagementValues} />
+        <CourseOutcomeSection data={courseOutcomeValues} />
+        <AboutCourseSection data={aboutCourseValues} />
+      </div>
+      <p className="text-sm text-gray-400 mt-4">
+        Last generated at: {generatedAt}
+      </p>
     </ProductLayout>
   );
 };
