@@ -1,0 +1,52 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-d58f4d1f711e9787.js",
+      "static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+      "static/chunks/964-d6e2a37b7965f281.js",
+      "static/chunks/main-app-e8de9948991b05aa.js",
+      "static/chunks/app/_not-found/page-14d6dad68ecd00d8.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-d58f4d1f711e9787.js",
+      "static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+      "static/chunks/964-d6e2a37b7965f281.js",
+      "static/chunks/main-app-e8de9948991b05aa.js",
+      "static/css/f08b3b0a84cbfeca.css",
+      "static/chunks/8e1d74a4-749cefb3c7d6b815.js",
+      "static/chunks/94730671-3764a4fe3d4432dd.js",
+      "static/chunks/9c4e2130-40d8d94316932646.js",
+      "static/chunks/751-8d206a76f1411dc9.js",
+      "static/chunks/app/layout-43793f7d46ffb3c3.js"
+    ],
+    "/en/product/ielts-course/page": [
+      "static/chunks/webpack-d58f4d1f711e9787.js",
+      "static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+      "static/chunks/964-d6e2a37b7965f281.js",
+      "static/chunks/main-app-e8de9948991b05aa.js",
+      "static/chunks/8e1d74a4-749cefb3c7d6b815.js",
+      "static/chunks/53c13509-ced24ab8e6b594a6.js",
+      "static/chunks/751-8d206a76f1411dc9.js",
+      "static/chunks/436-e6c8515de52b62c4.js",
+      "static/chunks/app/en/product/ielts-course/page-77ea35c45d056372.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-d58f4d1f711e9787.js",
+      "static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+      "static/chunks/964-d6e2a37b7965f281.js",
+      "static/chunks/main-app-e8de9948991b05aa.js",
+      "static/chunks/app/page-d82c40e88b65df32.js"
+    ],
+    "/product/ielts-course/page": [
+      "static/chunks/webpack-d58f4d1f711e9787.js",
+      "static/chunks/4bd1b696-cf72ae8a39fa05aa.js",
+      "static/chunks/964-d6e2a37b7965f281.js",
+      "static/chunks/main-app-e8de9948991b05aa.js",
+      "static/chunks/8e1d74a4-749cefb3c7d6b815.js",
+      "static/chunks/53c13509-ced24ab8e6b594a6.js",
+      "static/chunks/751-8d206a76f1411dc9.js",
+      "static/chunks/436-e6c8515de52b62c4.js",
+      "static/chunks/app/product/ielts-course/page-806d309444f80e0d.js"
+    ]
+  }
+}
