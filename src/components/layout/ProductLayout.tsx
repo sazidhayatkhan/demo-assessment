@@ -82,7 +82,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
             {/* Desktop Sticky Card (After Scroll Trigger) */}
             <aside className="w-full md:max-w-[330px] lg:max-w-[400px]">
               {isReady && showStickySection && (
-                <div className="hidden md:block sticky top-[110px] z-10 border border-slate-300">
+                <div className="hidden md:block sticky top-[100px] z-10 border border-slate-300">
                   {courseCard}
                 </div>
               )}

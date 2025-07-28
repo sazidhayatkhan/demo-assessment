@@ -49,7 +49,7 @@ const ProductUI = ({ data }: Props) => {
       courseChecklistValues={courseChecklistValues}
       ctaButtonValue={ctaButtonValue}
     >
-      <div className="hidden md:block sticky top-[62px] z-10 bg-white py-3 mb-6">
+      <div className="hidden md:block sticky top-[60px] z-10 bg-white py-3 mb-6">
         <CustomSlider data={sliderValues} />
       </div>
       <div className="mt-4 md:mt-0 space-y-8">
