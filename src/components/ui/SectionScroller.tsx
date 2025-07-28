@@ -3,22 +3,30 @@ import { useEffect } from 'react';
 import { useSectionStore } from '@/store/sectionStore';
 
 const SectionScroller = () => {
-  const activeSection = useSectionStore((state) => state.activeSection);
+  const setActiveSection = useSectionStore((state) => state.setActiveSection);
 
   useEffect(() => {
-    if (!activeSection) return;
+    const sections = document.querySelectorAll('[data-section-name]');
 
-    const el = document.getElementById(activeSection);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      const offsetTop = window.scrollY + rect.top - 200;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find(
+          (entry) => entry.isIntersecting && entry.intersectionRatio >= 0.5
+        );
+        if (visible) {
+          const id = visible.target.getAttribute('data-section-name');
+          if (id) setActiveSection(id);
+        }
+      },
+      {
+        rootMargin: '-200px 0px -50% 0px', // 200px top offset
+        threshold: [0.5],
+      }
+    );
 
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth',
-      });
-    }
-  }, [activeSection]);
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [setActiveSection]);
 
   return null;
 };

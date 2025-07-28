@@ -45,31 +45,31 @@ const ProductUI = ({ data }: Props) => {
 
       <div className="mt-4 md:mt-0 space-y-8">
         {instructorSection && (
-          <div id={instructorSection.name}>
+          <div id={instructorSection.name} data-section-name={instructorSection.name}>
             <InstructorSection data={instructorSection} />
           </div>
         )}
 
         {courseFeaturesSection && (
-          <div id={courseFeaturesSection.name}>
+          <div id={courseFeaturesSection.name} data-section-name={courseFeaturesSection.name}>
             <CourseFeatureSection data={courseFeaturesSection} />
           </div>
         )}
 
         {engagementSection && (
-          <div id={engagementSection.name}>
+          <div id={engagementSection.name} data-section-name={engagementSection.name}>
             <EngagementSection data={engagementSection} />
           </div>
         )}
 
         {courseOutcomeSection && (
-          <div id={courseOutcomeSection.name}>
+          <div id={courseOutcomeSection.name} data-section-name={courseOutcomeSection.name}>
             <CourseOutcomeSection data={courseOutcomeSection} />
           </div>
         )}
 
         {aboutCourseSection && (
-          <div id={aboutCourseSection.name}>
+          <div id={aboutCourseSection.name} data-section-name={aboutCourseSection.name}>
             <AboutCourseSection data={aboutCourseSection} />
           </div>
         )}
