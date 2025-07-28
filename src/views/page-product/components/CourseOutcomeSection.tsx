@@ -9,6 +9,7 @@ type Props = {
 const CourseOutcomeSection = ({data}: Props) => {
   return (
     <div>
+      <div className="section-divider"></div>
       <h2 className="mb-4 text-xl font-semibold md:text-2xl">{data?.name}</h2>
       <div className="rounded-md md:border border-slate-300">
         <div className="pt-2 md:p-6">

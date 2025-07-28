@@ -53,13 +53,12 @@ const ProductUI = ({ data }: Props) => {
         <CustomSlider data={sliderValues} />
       </div>
       <div className="mt-4 md:mt-0 space-y-8">
-        <div className="section-divider"></div>
         <InstructorSection data={instructorValues} />
         <CourseFeatureSection data={courseFeatureValues} /> 
         <EngagementSection data={engagementValues} />
-        <div className="section-divider"></div>
+        
         <CourseOutcomeSection data={courseOutcomeValues} />
-        <div className="section-divider"></div>
+        
         <AboutCourseSection data={aboutCourseValues} />
       </div>
       <p className="text-sm text-gray-400 mt-4">
