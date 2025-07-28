@@ -30,22 +30,23 @@ const CustomSlider = ({ data }: Props) => {
       >
         <FaCircleChevronLeft/>
       </button>
-
-      <ul
-        ref={listRef}
-        className="flex flex-nowrap overflow-x-scroll scroll-smooth no-scrollbar mx-8"
-      >
-        {data?.map((item, idx) =>
-          item?.name === '' ? null : (
-            <li
-              key={idx}
-              className="text-nowrap p-2 text-base min-w-fit"
-            >
-              <button className='cursor-pointer font-medium text-gray-600'>{item?.name}</button>
-            </li>
-          )
-        )}
-      </ul>
+      
+        <ul
+          ref={listRef}
+          className="flex flex-nowrap overflow-x-scroll scroll-smooth no-scrollbar mx-8 border-b-[1px] border-slate-300"
+        >
+          {data?.map((item, idx) =>
+            item?.name === '' ? null : (
+              <li
+                key={idx}
+                className="text-nowrap p-2 text-base min-w-fit"
+              >
+                <button className='cursor-pointer font-medium text-gray-600'>{item?.name}</button>
+              </li>
+            )
+          )}
+        </ul>
+     
 
       <button
         onClick={() => scroll('right')}
