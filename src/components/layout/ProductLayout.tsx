@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import PreviewSliderContainer from "../ui/Slider/PreviewSlider/PreviewSliderContainer";
 import CourseCardSection from "../common/CourseCardSection";
 import Header from "../common/Header";
@@ -22,6 +23,19 @@ const ProductLayout: React.FC<LayoutProps> = ({
   ctaButtonValue,
   headerValue,
 }) => {
+  const [showStickySection, setShowStickySection] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const triggerPoint = 600; // Adjust this value as needed
+      setShowStickySection(scrollY > triggerPoint);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-[300px]">
       <div className="relative container">
@@ -35,29 +49,43 @@ const ProductLayout: React.FC<LayoutProps> = ({
           </div>
           <Header headerValue={headerValue} />
         </div>
+
         <div className="block md:hidden">
           <CourseCardSection
             checklist={courseChecklistValues}
             ctaButton={ctaButtonValue}
           />
         </div>
-        {/* Desktop View */}
-        <div className="hidden md:block w-full md:max-w-[330px] lg:max-w-[390px] absolute right-9 md:top-[55px]">
-          <div className="main-part bg-white p-1 border border-slate-300">
-            <PreviewSliderContainer data={mediaPreviewValues} />
-            <CourseCardSection
-              checklist={courseChecklistValues}
-              ctaButton={ctaButtonValue}
-            />
+
+        {/* Desktop Floating Block (Hide on Scroll) */}
+        {!showStickySection && (
+          <div className="hidden md:block w-full md:max-w-[330px] lg:max-w-[390px] absolute right-12 md:top-[55px]">
+            <div className="bg-white p-1 border border-slate-300">
+              <PreviewSliderContainer data={mediaPreviewValues} />
+              <CourseCardSection
+                checklist={courseChecklistValues}
+                ctaButton={ctaButtonValue}
+              />
+            </div>
           </div>
-        </div>
+        )}
+
         {/* Page-specific content */}
         <div className="pt-4 bg-white">
           <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-4 md:px-12">
             <div className="flex-1 md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
               {children}
             </div>
-            <div className="hidden w-full md:max-w-[330px] lg:max-w-[390px]">
+            <div className="w-full md:max-w-[330px] lg:max-w-[400px]">
+              {/* Sticky Block (Visible After Scroll) */}
+              {showStickySection && (
+                <div className="hidden md:block sticky top-[110px] z-10 border border-slate-300">
+                  <CourseCardSection
+                    checklist={courseChecklistValues}
+                    ctaButton={ctaButtonValue}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
