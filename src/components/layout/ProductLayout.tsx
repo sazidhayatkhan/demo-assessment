@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import Header from '../common/Header';
 import CourseCardSection from '../common/CourseCardSection';
@@ -32,6 +32,17 @@ const ProductLayout: React.FC<LayoutProps> = ({
 }) => {
   const showStickySection = useStickyTrigger(STICKY_SCROLL_TRIGGER);
 
+  const courseCard = useMemo(() => (
+    <CourseCardSection
+      checklist={courseChecklistValues}
+      ctaButton={ctaButtonValue}
+    />
+  ), [courseChecklistValues, ctaButtonValue]);
+
+  const previewSlider = useMemo(() => (
+    <PreviewSliderContainer data={mediaPreviewValues} />
+  ), [mediaPreviewValues]);
+
   return (
     <div className="min-h-[300px]">
       <div className="relative container">
@@ -42,28 +53,22 @@ const ProductLayout: React.FC<LayoutProps> = ({
           style={{ backgroundImage: "url('/images/bg_img.jpeg')" }}
         >
           <div className="block md:hidden p-4">
-            <PreviewSliderContainer data={mediaPreviewValues} />
+            {previewSlider}
           </div>
           <Header headerValue={headerValue} />
         </div>
 
         {/* Mobile Course Card */}
         <div className="block md:hidden">
-          <CourseCardSection
-            checklist={courseChecklistValues}
-            ctaButton={ctaButtonValue}
-          />
+          {courseCard}
         </div>
 
         {/* Desktop Floating Card (Before Scroll Trigger) */}
         {!showStickySection && (
           <div className="hidden md:block w-full md:max-w-[330px] lg:max-w-[390px] absolute right-12 md:top-[55px]">
             <div className="bg-white p-1 border border-slate-300">
-              <PreviewSliderContainer data={mediaPreviewValues} />
-              <CourseCardSection
-                checklist={courseChecklistValues}
-                ctaButton={ctaButtonValue}
-              />
+              {previewSlider}
+              {courseCard}
             </div>
           </div>
         )}
@@ -79,10 +84,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
             <aside className="w-full md:max-w-[330px] lg:max-w-[400px]">
               {showStickySection && (
                 <div className="hidden md:block sticky top-[110px] z-10 border border-slate-300">
-                  <CourseCardSection
-                    checklist={courseChecklistValues}
-                    ctaButton={ctaButtonValue}
-                  />
+                  {courseCard}
                 </div>
               )}
             </aside>
