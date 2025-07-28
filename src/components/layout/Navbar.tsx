@@ -3,88 +3,73 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-
-import { IoSearchOutline } from "react-icons/io5";
+import { IoSearchOutline, IoCall } from "react-icons/io5";
 import { FaChevronDown } from "react-icons/fa";
-import { IoCall } from "react-icons/io5";
+
 const Navbar = () => {
-  const data = [
-    {
-      title: "Class 6-12",
-      url: "",
-    },
-    {
-      title: "Skills",
-      url: "",
-    },
-    {
-      title: "Admission",
-      url: "",
-    },
-    {
-      title: "Online Batch",
-      url: "",
-    },
-    {
-      title: "English Center",
-      url: "",
-    },
-    {
-      title: "More",
-      url: "",
-    },
-  ];
   const pathname = usePathname();
-    const router = useRouter();
-  
-    const isEnglish = pathname.startsWith("/en");
-  
-    const changeLanguage = () => {
-      let newPath = "";
-      if (isEnglish) {
-        // Remove "/en"
-        newPath = pathname.replace(/^\/en/, "") || "/";
-      } else {
-        // Add "/en"
-        newPath = "/en" + pathname;
-      }
-      router.push(newPath);
-    };
+  const router = useRouter();
+
+  const data = [
+    { title: "Class 6-12", url: "" },
+    { title: "Skills", url: "" },
+    { title: "Admission", url: "" },
+    { title: "Online Batch", url: "" },
+    { title: "English Center", url: "" },
+    { title: "More", url: "" },
+  ];
+
+  const isEnglish = pathname.startsWith("/en");
+
+  const changeLanguage = () => {
+    let newPath = "";
+    if (isEnglish) {
+      newPath = pathname.replace(/^\/en/, "") || "/";
+    } else {
+      newPath = "/en" + pathname;
+    }
+    router.push(newPath);
+  };
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-20 bg-white px-4 md:px-7 py-4 w-full border-b-[1px] border-slate-300">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="flex items-center gap-3">
-          <Link href="/">
-            <Image
-              src="https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"
-              alt="10ms"
-              width={100}
-              height={27}
-            />
-          </Link>
-          <div className="relative max-w-[300px] w-full">
-            <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-              <IoSearchOutline size={18} />
-            </span>
-            <input
-              type="text"
-              placeholder="স্কিলস কোর্স, কিংবা স্কুল প্রোগ্রাম সার্চ করুন..."
-              className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-full text-xs text-gray-700 placeholder-gray-400 outline-none"
-              aria-label="Search courses or school programs"
-            />
-          </div>
-          <div>
-            <ul className="flex gap-6 items-center">
-              {data?.map((item: { title: string }, idx: number) => (
-                <li key={idx} className="text-sm text-gray-600 flex items-center gap-1">
-                  {item.title}
-                  <span className="text-xs"><FaChevronDown/></span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <button onClick={changeLanguage} className="ms-2 cursor-pointer">
-            <span className="hidden cursor-pointer items-center gap-1 rounded border border-slate-300 px-2 py-[3px] hover:bg-slate-50 md:flex">
+    <div className="fixed top-0 left-0 right-0 z-20 bg-white px-4 md:px-7 py-4 w-full border-b border-slate-300">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-3 px-4 md:px-7">
+        {/* Logo */}
+        <Link href="/">
+          <Image
+            src="https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"
+            alt="10ms"
+            width={100}
+            height={27}
+          />
+        </Link>
+
+        {/* Search Input (Flexible Width) */}
+        <div className="relative flex-1 min-w-[180px] max-w-[320px] w-full me-5">
+          <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
+            <IoSearchOutline size={18} />
+          </span>
+          <input
+            type="text"
+            placeholder="স্কিলস কোর্স, কিংবা স্কুল প্রোগ্রাম সার্চ করুন..."
+            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-full text-xs text-gray-700 placeholder-gray-400 outline-none"
+            aria-label="Search courses or school programs"
+          />
+        </div>
+
+        {/* Nav Links */}
+        <ul className="flex gap-6 items-center flex-wrap text-sm text-gray-600 whitespace-nowrap">
+          {data.map((item, idx) => (
+            <li key={idx} className="flex items-center gap-1 cursor-pointer">
+              {item.title}
+              <FaChevronDown className="text-xs" />
+            </li>
+          ))}
+        </ul>
+
+        {/* Language Switcher */}
+        <button onClick={changeLanguage} className="cursor-pointer">
+            <span className="hidden cursor-pointer items-center gap-1 rounded border px-2 py-[2px] hover:bg-slate-50 md:flex">
               <svg
                 className="hidden md:block"
                 width="15"
@@ -114,16 +99,17 @@ const Navbar = () => {
                   </clipPath>
                 </defs>
               </svg>
-              <span className="text-sm">{isEnglish ? "EN" : "BN"}</span>
+              <span>{isEnglish ? "EN" : "BN"}</span>
             </span>
           </button>
-          <div>
-            <button className="text-green flex items-center"><span><IoCall/></span>16910</button>
-          </div>
-          <button className="inline-block bg-green text-white text-sm px-2 py-[3px] rounded">
-            লগ-ইন
-          </button>
-        </div>
+
+        {/* Phone & Login Buttons */}
+        <button className="flex items-center text-green ms-2">
+          <IoCall className="mr-1" /> 16910
+        </button>
+        <button className="text-nowrap bg-green text-white text-sm px-2 py-[3px] rounded ms-2">
+          লগ-ইন
+        </button>
       </div>
     </div>
   );

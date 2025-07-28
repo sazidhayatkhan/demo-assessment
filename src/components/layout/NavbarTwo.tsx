@@ -1,30 +1,4 @@
-"use client";
-
-import { usePathname, useRouter } from "next/navigation";
-
-const Navbar = () => {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const isEnglish = pathname.startsWith("/en");
-
-  const changeLanguage = () => {
-    let newPath = "";
-    if (isEnglish) {
-      // Remove "/en"
-      newPath = pathname.replace(/^\/en/, "") || "/";
-    } else {
-      // Add "/en"
-      newPath = "/en" + pathname;
-    }
-    router.push(newPath);
-  };
-
-  return (
-    <div className="fixed top-0 left-0 right-0 z-20 bg-white px-4 md:px-7 py-4 w-full border-b-[1px] border-slate-300">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="flex justify-end">
-          <button onClick={changeLanguage} className="cursor-pointer">
+<button onClick={changeLanguage} className="cursor-pointer">
             <span className="hidden cursor-pointer items-center gap-1 rounded border px-2 py-[2px] hover:bg-slate-50 md:flex">
               <svg
                 className="hidden md:block"
@@ -58,10 +32,3 @@ const Navbar = () => {
               <span>{isEnglish ? "EN" : "BN"}</span>
             </span>
           </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Navbar;
