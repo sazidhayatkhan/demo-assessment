@@ -7,7 +7,7 @@ import EngagementSection from "./components/EngagementSection";
 import CourseOutcomeSection from "./components/CourseOutcomeSection";
 import AboutCourseSection from "./components/AboutCourseSection";
 import Header from "./components/Header";
-import CourseCardContainer from "@/components/ui/Card/CourseCard/CourseCardContainer";
+import PreviewSliderContainer from "@/components/ui/Slider/PreviewSlider/PreviewSliderContainer";
 
 type Props = {
   data: Product;
@@ -38,25 +38,33 @@ const ProductUI = ({ data }: Props) => {
   const engagementValues = engagementSection ?? {};
   const courseOutcomeValues = courseOutcomeSection ?? {};
   const aboutCourseValues = aboutCourseSection ?? {};
-  const coursePreviewValues = data?.data?.media ?? [];
+  const mediaPreviewValues = data?.data?.media ?? [];
   const courseChecklistValues = data?.data?.checklist ?? []
   const ctaButtonValue = data?.data?.cta_text ?? {}
   
   return (
       <>
-      <div className="bg-black">
+      <div className="bg-black min-h-[300px] md:min-h-[300px]">
         <div className="relative container">
+          <div className="block md:hidden p-4">
+            <PreviewSliderContainer data={mediaPreviewValues}/>
+          </div>
           <Header/>
-          <CourseCardContainer 
+          {/* <CourseCardContainer 
             data={coursePreviewValues} 
             checklist={courseChecklistValues}
             ctaButton={ctaButtonValue}
-          />
+          /> */}
+          <div className="w-full md:max-w-[330px] lg:max-w-[390px] order-2 absolute right-9 md:top-[55px] md:absolute">
+            <div className="hidden md:block">
+              <PreviewSliderContainer data={mediaPreviewValues}/>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-12">
+      <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-4 md:px-12">
         <div className="flex-1 md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
-          <div className="sticky top-[62px] z-10 bg-white py-3 mb-6">
+          <div className="hidden md:sticky top-[62px] z-10 bg-white py-3 mb-6">
             <CustomSlider data={sliderValues} />
           </div>
           <div className="space-y-8">
@@ -70,8 +78,9 @@ const ProductUI = ({ data }: Props) => {
             Last generated at: {generatedAt}
           </p>
         </div>
-
-        <div className="hidden w-full md:max-w-[330px] lg:max-w-[400px] bg-white"></div>
+        <div className="hidden w-full md:max-w-[330px] lg:max-w-[390px] bg-white">
+          
+        </div>
       </div>
       </>
   );
