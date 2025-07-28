@@ -1,15 +1,17 @@
+import { HeaderModel } from "@/types/headerModel";
 import React from "react";
 
-type Props = {};
+type Props = {
+    headerValue:HeaderModel
+};
 
-const Header = (props: Props) => {
+const Header = ({headerValue}: Props) => {
   return (
-    // min-h-[30vh] md:h-[310px]
     <div className="pb-6 md:py-10 min-h-[300px] flex items-center">
         <div className="container px-4 md:px-12">
         <div className="md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
             <h1 className="text-white mb-2 text-[21px] font-semibold md:text-4xl">
-                IELTS Course by Munzereen Shahid
+                {headerValue?.title}
             </h1>
             <div className="mb-2">
                 <button className="flex flex-row flex-wrap gap-2 text-white">
@@ -26,11 +28,7 @@ const Header = (props: Props) => {
                 </button>
             </div>
             <div className="text-gray-400">
-                <p className="whitespace-pre-wrap">
-                Academic IELTS এবং General Training IELTS- এর কমপ্লিট প্রিপারেশন নিন
-                একটি কোর্সেই! দেশসেরা IELTS Instructor এর গাইডলাইনে আপনার কাঙ্ক্ষিত
-                ব্যান্ড স্কোরটি অর্জন করতে আজই জয়েন করুন আমাদের IELTS Course-এ। 
-                </p>
+                <div className="whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: headerValue?.description ?? "" }}/>
             </div>
         </div>
 

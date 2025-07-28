@@ -40,9 +40,11 @@ const ProductUI = ({ data }: Props) => {
   const mediaPreviewValues = data?.data?.media ?? [];
   const courseChecklistValues = data?.data?.checklist ?? [];
   const ctaButtonValue = data?.data?.cta_text ?? {};
+  const headerValue = data?.data ?? {}
 
   return (
     <ProductLayout
+      headerValue={headerValue}
       mediaPreviewValues={mediaPreviewValues}
       courseChecklistValues={courseChecklistValues}
       ctaButtonValue={ctaButtonValue}

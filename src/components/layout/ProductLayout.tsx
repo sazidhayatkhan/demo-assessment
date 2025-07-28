@@ -2,13 +2,17 @@ import React from 'react';
 import PreviewSliderContainer from '../ui/Slider/PreviewSlider/PreviewSliderContainer';
 import CourseCardSection from '../common/CourseCardSection';
 import Header from '../common/Header';
+import { Checklist } from '@/types/checklist';
+import { CtaButtonModel } from '@/types/ctaButtonModel';
+import { Media } from '@/types/media';
 
 
 interface LayoutProps {
   children: React.ReactNode;
-  mediaPreviewValues: any; // adjust typing as needed
-  courseChecklistValues: any;
-  ctaButtonValue: any;
+  mediaPreviewValues: Media[];
+  courseChecklistValues: Checklist[];
+  ctaButtonValue: CtaButtonModel;
+  headerValue:any;
 }
 
 const ProductLayout: React.FC<LayoutProps> = ({
@@ -16,6 +20,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
   mediaPreviewValues,
   courseChecklistValues,
   ctaButtonValue,
+  headerValue
 }) => {
   return (
     <div className="min-h-[300px]">
@@ -25,7 +30,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
         <div className="block md:hidden p-4">
           <PreviewSliderContainer data={mediaPreviewValues} />
         </div>
-            <Header />
+            <Header headerValue={headerValue}/>
         </div>
         <div className="block md:hidden">
           <CourseCardSection
