@@ -107,7 +107,7 @@ const Navbar = () => {
         <button className="flex items-center text-green ms-2">
           <IoCall className="mr-1" /> 16910
         </button>
-        <button className="text-nowrap bg-green text-white text-sm px-2 py-[3px] rounded ms-2">
+        <button className="text-nowrap bg-green text-white text-sm px-3 py-[4px] rounded ms-2">
           লগ-ইন
         </button>
       </div>
