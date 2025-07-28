@@ -14,7 +14,6 @@ type Props = {
 };
 
 const ProductUI = ({ data }: Props) => {
-  const generatedAt = new Date().toLocaleTimeString();
   const sections = data?.data?.sections ?? [];
 
   const findSection = (type: string): Section | undefined =>
@@ -74,9 +73,6 @@ const ProductUI = ({ data }: Props) => {
           </div>
         )}
       </div>
-      <p className="text-sm text-gray-400 mt-4">
-        Last generated at: {generatedAt}
-      </p>
     </ProductLayout>
   );
 };
