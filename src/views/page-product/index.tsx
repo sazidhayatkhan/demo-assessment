@@ -13,7 +13,6 @@ type Props = {
 };
 
 const ProductUI = ({ data }: Props) => {
-  const generatedAt = new Date().toLocaleTimeString();
 
   const instructorSection: Section | undefined = data?.data?.sections.find(
     (section) => section.type === "instructors"
@@ -59,9 +58,6 @@ const ProductUI = ({ data }: Props) => {
         <CourseOutcomeSection data={courseOutcomeValues} />
         <AboutCourseSection data={aboutCourseValues} />
       </div>
-      <p className="text-sm text-gray-400 mt-4">
-        Last generated at: {generatedAt}
-      </p>
     </ProductLayout>
   );
 };
