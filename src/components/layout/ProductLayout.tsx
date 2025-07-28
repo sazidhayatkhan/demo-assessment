@@ -5,13 +5,14 @@ import Header from "../common/Header";
 import { Checklist } from "@/types/checklist";
 import { CtaButtonModel } from "@/types/ctaButtonModel";
 import { Media } from "@/types/media";
+import { HeaderModel } from "@/types/headerModel";
 
 interface LayoutProps {
   children: React.ReactNode;
   mediaPreviewValues: Media[];
   courseChecklistValues: Checklist[];
   ctaButtonValue: CtaButtonModel;
-  headerValue: any;
+  headerValue: HeaderModel;
 }
 
 const ProductLayout: React.FC<LayoutProps> = ({
@@ -56,13 +57,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
             <div className="flex-1 md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
               {children}
             </div>
-            <div className="this-part hidden w-full md:max-w-[330px] lg:max-w-[390px] bg-white">
-              <div className="ms-6 border border-slate-300">
-                <CourseCardSection
-                  checklist={courseChecklistValues}
-                  ctaButton={ctaButtonValue}
-                />
-              </div>
+            <div className="hidden w-full md:max-w-[330px] lg:max-w-[390px]">
             </div>
           </div>
         </div>
