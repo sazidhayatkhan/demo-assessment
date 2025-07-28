@@ -30,6 +30,7 @@ body {
   margin: auto;
 }
 
+
 /* Thin scrollbar for WebKit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 6px;
@@ -59,4 +60,12 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+@media (max-width: 786px){
+  .section-divider {
+    display: block;
+    width: 100%;
+    height: 8px;
+    background-color: lab(96.286% -.852466 -2.46847);
+  }
 }

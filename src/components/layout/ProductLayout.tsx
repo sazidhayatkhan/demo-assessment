@@ -73,7 +73,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
         )}
 
         {/* Main Content */}
-        <div className="pt-4 bg-white">
+        <div className="pt-0 md:pt-4 bg-white">
           <div className="container flex flex-col gap-4 md:flex-row md:gap-12 px-4 md:px-12">
             <main className="flex-1 md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
               {children}
