@@ -7,39 +7,29 @@ import EngagementSection from "./components/EngagementSection";
 import CourseOutcomeSection from "./components/CourseOutcomeSection";
 import AboutCourseSection from "./components/AboutCourseSection";
 import ProductLayout from "@/components/layout/ProductLayout";
+import SectionScroller from "@/components/ui/SectionScroller";
 
 type Props = {
   data: Product;
 };
 
 const ProductUI = ({ data }: Props) => {
+  const generatedAt = new Date().toLocaleTimeString();
+  const sections = data?.data?.sections ?? [];
 
-  const instructorSection: Section | undefined = data?.data?.sections.find(
-    (section) => section.type === "instructors"
-  );
-  const courseFeaturesSection: Section | undefined = data?.data?.sections.find(
-    (section) => section.type === "features"
-  );
-  const engagementSection: Section | undefined = data?.data?.sections.find(
-    (section) => section.type === "group_join_engagement"
-  );
-  const courseOutcomeSection: Section | undefined = data?.data?.sections.find(
-    (section) => section.type === "pointers"
-  );
-  const aboutCourseSection: Section | undefined = data?.data?.sections.find(
-    (section) => section.type === "about"
-  );
+  const findSection = (type: string): Section | undefined =>
+    sections.find((section) => section.type === type);
 
-  const sliderValues = data?.data?.sections ?? [];
-  const instructorValues = instructorSection ?? {};
-  const courseFeatureValues = courseFeaturesSection ?? {};
-  const engagementValues = engagementSection ?? {};
-  const courseOutcomeValues = courseOutcomeSection ?? {};
-  const aboutCourseValues = aboutCourseSection ?? {};
+  const instructorSection = findSection("instructors");
+  const courseFeaturesSection = findSection("features");
+  const engagementSection = findSection("group_join_engagement");
+  const courseOutcomeSection = findSection("pointers");
+  const aboutCourseSection = findSection("about");
+
+  const headerValue = data?.data ?? {};
   const mediaPreviewValues = data?.data?.media ?? [];
   const courseChecklistValues = data?.data?.checklist ?? [];
   const ctaButtonValue = data?.data?.cta_text ?? {};
-  const headerValue = data?.data ?? {};
 
   return (
     <ProductLayout
@@ -48,16 +38,45 @@ const ProductUI = ({ data }: Props) => {
       courseChecklistValues={courseChecklistValues}
       ctaButtonValue={ctaButtonValue}
     >
+      <SectionScroller />
       <div className="hidden md:block sticky top-[60px] z-10 bg-white py-3 mb-6">
-        <CustomSlider data={sliderValues} />
+        <CustomSlider data={sections} />
       </div>
+
       <div className="mt-4 md:mt-0 space-y-8">
-        <InstructorSection data={instructorValues}/>
-        <CourseFeatureSection data={courseFeatureValues} /> 
-        <EngagementSection data={engagementValues} />
-        <CourseOutcomeSection data={courseOutcomeValues} />
-        <AboutCourseSection data={aboutCourseValues} />
+        {instructorSection && (
+          <div id={instructorSection.name}>
+            <InstructorSection data={instructorSection} />
+          </div>
+        )}
+
+        {courseFeaturesSection && (
+          <div id={courseFeaturesSection.name}>
+            <CourseFeatureSection data={courseFeaturesSection} />
+          </div>
+        )}
+
+        {engagementSection && (
+          <div id={engagementSection.name}>
+            <EngagementSection data={engagementSection} />
+          </div>
+        )}
+
+        {courseOutcomeSection && (
+          <div id={courseOutcomeSection.name}>
+            <CourseOutcomeSection data={courseOutcomeSection} />
+          </div>
+        )}
+
+        {aboutCourseSection && (
+          <div id={aboutCourseSection.name}>
+            <AboutCourseSection data={aboutCourseSection} />
+          </div>
+        )}
       </div>
+      <p className="text-sm text-gray-400 mt-4">
+        Last generated at: {generatedAt}
+      </p>
     </ProductLayout>
   );
 };
