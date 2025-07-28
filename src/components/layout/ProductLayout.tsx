@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import React, { useMemo } from 'react';
+import React, { useMemo } from "react";
 
-import Header from '../common/Header';
-import CourseCardSection from '../common/CourseCardSection';
-import PreviewSliderContainer from '../ui/Slider/PreviewSlider/PreviewSliderContainer';
+import Header from "../common/Header";
+import CourseCardSection from "../common/CourseCardSection";
+import PreviewSliderContainer from "../ui/Slider/PreviewSlider/PreviewSliderContainer";
 
-import useStickyTrigger from '@/hooks/useStickyTrigger';
+import useStickyTrigger from "@/hooks/useStickyTrigger";
 
-import { Checklist } from '@/types/checklist';
-import { CtaButtonModel } from '@/types/ctaButtonModel';
-import { Media } from '@/types/media';
-import { HeaderModel } from '@/types/headerModel';
+import { Checklist } from "@/types/checklist";
+import { CtaButtonModel } from "@/types/ctaButtonModel";
+import { Media } from "@/types/media";
+import { HeaderModel } from "@/types/headerModel";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -30,41 +30,40 @@ const ProductLayout: React.FC<LayoutProps> = ({
   ctaButtonValue,
   headerValue,
 }) => {
-  const showStickySection = useStickyTrigger(STICKY_SCROLL_TRIGGER);
+  const [showStickySection, isReady] = useStickyTrigger(STICKY_SCROLL_TRIGGER);
 
-  const courseCard = useMemo(() => (
-    <CourseCardSection
-      checklist={courseChecklistValues}
-      ctaButton={ctaButtonValue}
-    />
-  ), [courseChecklistValues, ctaButtonValue]);
+  const courseCard = useMemo(
+    () => (
+      <CourseCardSection
+        checklist={courseChecklistValues}
+        ctaButton={ctaButtonValue}
+      />
+    ),
+    [courseChecklistValues, ctaButtonValue]
+  );
 
-  const previewSlider = useMemo(() => (
-    <PreviewSliderContainer data={mediaPreviewValues} />
-  ), [mediaPreviewValues]);
+  const previewSlider = useMemo(
+    () => <PreviewSliderContainer data={mediaPreviewValues} />,
+    [mediaPreviewValues]
+  );
 
   return (
     <div className="min-h-[300px]">
       <div className="relative container">
-
         {/* Mobile Header + Preview Slider */}
         <div
           className="bg-cover bg-center"
           style={{ backgroundImage: "url('/images/bg_img.jpeg')" }}
         >
-          <div className="block md:hidden p-4">
-            {previewSlider}
-          </div>
+          <div className="block md:hidden p-4">{previewSlider}</div>
           <Header headerValue={headerValue} />
         </div>
 
         {/* Mobile Course Card */}
-        <div className="block md:hidden">
-          {courseCard}
-        </div>
+        <div className="block md:hidden">{courseCard}</div>
 
         {/* Desktop Floating Card (Before Scroll Trigger) */}
-        {!showStickySection && (
+        {isReady && !showStickySection && (
           <div className="hidden md:block w-full md:max-w-[330px] lg:max-w-[390px] absolute right-12 md:top-[55px]">
             <div className="bg-white p-1 border border-slate-300">
               {previewSlider}
@@ -82,7 +81,7 @@ const ProductLayout: React.FC<LayoutProps> = ({
 
             {/* Desktop Sticky Card (After Scroll Trigger) */}
             <aside className="w-full md:max-w-[330px] lg:max-w-[400px]">
-              {showStickySection && (
+              {isReady && showStickySection && (
                 <div className="hidden md:block sticky top-[110px] z-10 border border-slate-300">
                   {courseCard}
                 </div>

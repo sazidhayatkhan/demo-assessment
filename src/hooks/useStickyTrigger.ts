@@ -1,24 +1,22 @@
-'use client'
+'use client';
 import { useEffect, useState } from 'react';
-/**
- * A hook that tracks whether the page has been scrolled past a given Y offset.
- * @param triggerPoint - The vertical scroll threshold in pixels.
- * @returns `true` if scrollY > triggerPoint, otherwise `false`.
- */
 
-const useStickyTrigger = (triggerPoint: number): boolean => {
+const useStickyTrigger = (triggerPoint: number): [boolean, boolean] => {
   const [isSticky, setIsSticky] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > triggerPoint);
+      setIsReady(true);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [triggerPoint]);
 
-  return isSticky;
+  return [isSticky, isReady];
 };
 
 export default useStickyTrigger;
