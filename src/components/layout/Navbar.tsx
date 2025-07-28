@@ -3,8 +3,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+
 import { IoSearchOutline } from "react-icons/io5";
 import { FaChevronDown } from "react-icons/fa";
+import { IoCall } from "react-icons/io5";
 const Navbar = () => {
   const data = [
     {
@@ -114,6 +116,12 @@ const Navbar = () => {
               </svg>
               <span className="text-sm">{isEnglish ? "EN" : "BN"}</span>
             </span>
+          </button>
+          <div>
+            <button className="text-green flex items-center"><span><IoCall/></span>16910</button>
+          </div>
+          <button className="inline-block bg-green text-white text-sm px-2 py-[3px] rounded">
+            লগ-ইন
           </button>
         </div>
       </div>
