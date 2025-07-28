@@ -8,6 +8,7 @@ import CourseOutcomeSection from "./components/CourseOutcomeSection";
 import AboutCourseSection from "./components/AboutCourseSection";
 import Header from "./components/Header";
 import PreviewSliderContainer from "@/components/ui/Slider/PreviewSlider/PreviewSliderContainer";
+import CourseCardSection from "./components/CourseCardSection";
 
 type Props = {
   data: Product;
@@ -39,25 +40,33 @@ const ProductUI = ({ data }: Props) => {
   const courseOutcomeValues = courseOutcomeSection ?? {};
   const aboutCourseValues = aboutCourseSection ?? {};
   const mediaPreviewValues = data?.data?.media ?? [];
-  const courseChecklistValues = data?.data?.checklist ?? []
-  const ctaButtonValue = data?.data?.cta_text ?? {}
-  
+  const courseChecklistValues = data?.data?.checklist ?? [];
+  const ctaButtonValue = data?.data?.cta_text ?? {};
+
   return (
-      <>
-      <div className="bg-black min-h-[300px] md:min-h-[300px]">
+    <>
+      <div className="bg-black min-h-[300px]">
         <div className="relative container">
+          {/* Mobile View */}
           <div className="block md:hidden p-4">
-            <PreviewSliderContainer data={mediaPreviewValues}/>
+            <PreviewSliderContainer data={mediaPreviewValues} />
           </div>
-          <Header/>
-          {/* <CourseCardContainer 
-            data={coursePreviewValues} 
-            checklist={courseChecklistValues}
-            ctaButton={ctaButtonValue}
-          /> */}
-          <div className="w-full md:max-w-[330px] lg:max-w-[390px] order-2 absolute right-9 md:top-[55px] md:absolute">
-            <div className="hidden md:block">
-              <PreviewSliderContainer data={mediaPreviewValues}/>
+          <Header />
+          <div className="block md:hidden">
+            <CourseCardSection
+              checklist={courseChecklistValues}
+              ctaButton={ctaButtonValue}
+            />
+          </div>
+
+          {/* Desktop View */}
+          <div className="hidden md:block w-full md:max-w-[330px] lg:max-w-[390px] absolute right-9 md:top-[55px]">
+            <div className="bg-white p-1 border border-slate-300">
+              <PreviewSliderContainer data={mediaPreviewValues} />
+              <CourseCardSection
+                checklist={courseChecklistValues}
+                ctaButton={ctaButtonValue}
+              />
             </div>
           </div>
         </div>
@@ -67,7 +76,7 @@ const ProductUI = ({ data }: Props) => {
           <div className="hidden md:block sticky top-[62px] z-10 bg-white py-3 mb-6">
             <CustomSlider data={sliderValues} />
           </div>
-          <div className="space-y-8">
+          <div className="mt-4 md:mt-0 space-y-8">
             <InstructorSection data={instructorValues} />
             <CourseFeatureSection data={courseFeatureValues} />
             <EngagementSection data={engagementValues} />
@@ -78,11 +87,9 @@ const ProductUI = ({ data }: Props) => {
             Last generated at: {generatedAt}
           </p>
         </div>
-        <div className="hidden w-full md:max-w-[330px] lg:max-w-[390px] bg-white">
-          
-        </div>
+        <div className="hidden w-full md:max-w-[330px] lg:max-w-[390px] bg-white"></div>
       </div>
-      </>
+    </>
   );
 };
 
