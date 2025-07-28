@@ -7,7 +7,7 @@ type Props = {
 
 const Header = ({headerValue}: Props) => {
   return (
-    <div className="pb-6 md:py-10 min-h-[300px] flex items-center">
+    <div className="pb-6 md:py-10 min-h-[210px] md:min-h-[300px] flex items-center">
         <div className="container px-4 md:px-12">
         <div className="md:max-w-[calc(100%_-_348px)] lg:max-w-[calc(100%_-_448px)]">
             <h1 className="text-white mb-2 text-[21px] font-semibold md:text-4xl">

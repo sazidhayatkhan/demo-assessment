@@ -26,7 +26,8 @@ const ProductLayout: React.FC<LayoutProps> = ({
     <div className="min-h-[300px]">
       <div className="relative container">
         {/* Mobile View */}
-        <div className='bg-black'>
+        <div className="bg-cover bg-center"
+  style={{ backgroundImage: "url('/images/bg_img.jpeg')" }}>
         <div className="block md:hidden p-4">
           <PreviewSliderContainer data={mediaPreviewValues} />
         </div>
